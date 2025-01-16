@@ -1,4 +1,13 @@
+import { Link } from "react-router-dom";
+
+Link;
 const Home = () => {
-  return <div>Home page</div>;
+  return (
+    <>
+      <Link to="/catalog">
+        <button>View Now</button>
+      </Link>
+    </>
+  );
 };
 export default Home;

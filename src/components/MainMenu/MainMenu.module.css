@@ -1,0 +1,7 @@
+.nav {
+  display: flex;
+  gap: 450px;
+  padding: 24px 0px;
+  background-color: #f7f7f7;
+  align-items: center;
+}

@@ -1,11 +1,24 @@
-import MainMenu from "../MainMenu/MainMenu.jsx";
+// import MainMenu from "../MainMenu/MainMenu.jsx";
+import { NavLink } from "react-router-dom";
+import css from "../../components/Header/Header.module.css";
 
 const Header = () => {
   return (
-    <div>
+    <nav className={css.nav}>
       <div>TravelTrucks</div>
-      <MainMenu />
-    </div>
+      <div className={css.navlink}>
+        <NavLink to="/">Home</NavLink>
+
+        <NavLink
+          to="/catalog"
+          className={({ isActive }) =>
+            isActive ? `${css.link} ${css.activeLink}` : css.link
+          }
+        >
+          Catalog
+        </NavLink>
+      </div>
+    </nav>
   );
 };
 export default Header;
