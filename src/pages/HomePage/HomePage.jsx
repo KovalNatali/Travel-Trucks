@@ -4,6 +4,7 @@ import css from "../../pages/HomePage/HomePage.module.css";
 function HomePage() {
   return (
     <div className={css.backgroundContainer}>
+      {" "}
       <div className={css.heroContent}>
         <div className={css.heroText}>
           <h1 className={css.title}>Campers of your dreams</h1>
@@ -15,7 +16,7 @@ function HomePage() {
           <Link to="/catalog">
             <button className={css.butButton}>View Now</button>
           </Link>
-        </div>
+        </div>{" "}
       </div>
     </div>
   );

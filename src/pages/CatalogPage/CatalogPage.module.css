@@ -1,8 +1,5 @@
-.cont {
-  display: flex;
-  justify-content: space-between;
-  padding: 48px 0;
-  max-width: 1312px;
-  margin: 0 auto;
+.conteiner {
+  /* display: flex; */
   gap: 64px;
+  padding: 48px 64px 52px;
 }

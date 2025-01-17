@@ -7,7 +7,14 @@ const Header = () => {
     <nav className={css.nav}>
       <div>TravelTrucks</div>
       <div className={css.navlink}>
-        <NavLink to="/">Home</NavLink>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? `${css.link} ${css.activeLink}` : css.link
+          }
+        >
+          Home
+        </NavLink>
 
         <NavLink
           to="/catalog"

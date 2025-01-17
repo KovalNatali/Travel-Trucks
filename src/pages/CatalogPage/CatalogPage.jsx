@@ -12,7 +12,7 @@ function CatalogPage() {
   }, [dispatch]);
 
   return (
-    <div className={css.cont}>
+    <div className={css.conteiner}>
       <CatalogList />
     </div>
   );

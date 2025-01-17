@@ -14,3 +14,17 @@ export const fetchCampers = createAsyncThunk(
     }
   }
 );
+
+export const fetchCampersDetails = createAsyncThunk(
+  "campers/fetchById", // Назва дії
+  async (id, thunkAPI) => {
+    try {
+      // Виконуємо GET запит до API для отримання кемпера за ID
+      const { data } = await axios.get(`/campers/${id}`);
+      return data; // Повертаємо отримані дані
+    } catch (error) {
+      // Якщо сталася помилка, передаємо її в action.payload
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

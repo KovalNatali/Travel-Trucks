@@ -1,0 +1,16 @@
+.image {
+  display: flex;
+  width: 312px;
+  height: 292px;
+  border-radius: 10px;
+}
+
+.gallary {
+  display: flex;
+
+  gap: 32px;
+}
+
+.p {
+  display: block;
+}
