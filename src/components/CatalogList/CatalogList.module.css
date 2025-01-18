@@ -95,3 +95,38 @@
   font-family: Inter, sans-serif;
   font-weight: 400;
 }
+.text {
+  color: #101828;
+  font-family: Inter, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-family: Inter, sans-serif;
+  padding: 12px 18px;
+  border-radius: 100px;
+  background-color: #f2f4f7;
+  text-transform: capitalize;
+  gap: 8px;
+}
+
+.box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+}
+.nameinfo {
+  display: flex;
+  width: 524px;
+  justify-content: space-between;
+  align-items: center;
+}
