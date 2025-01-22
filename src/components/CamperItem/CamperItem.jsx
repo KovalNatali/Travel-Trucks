@@ -1,51 +1,145 @@
+import { Link } from "react-router-dom";
+import {
+  addToFavorites,
+  removeFromFavorites,
+} from "../../redux/favoritesSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCampersDetails } from "../../redux/campers/operations.js";
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
 import css from "../CamperItem/CamperItem.module.css";
+// import { SVG } from "../../components/svg/svg";
 
-export default function CamperItem() {
+const CamperItem = ({ camper }) => {
   const dispatch = useDispatch();
-  const { id } = useParams();
-  const camper = useSelector((state) => state.campers.items);
+  const favorites = useSelector((state) => state.favorites.list);
 
-  useEffect(() => {
-    dispatch(fetchCampersDetails(id)); // Отримуємо деталі обраного кемпера
-  }, [dispatch, id]);
-  fetchCampersDetails();
+  // Handle favorites
+  const getIsFavorite = (id) => {
+    return favorites.includes(id);
+  };
+
+  const handleFavoriteClick = (id) => {
+    if (getIsFavorite(id)) {
+      dispatch(removeFromFavorites(id));
+    } else {
+      dispatch(addToFavorites(id));
+    }
+  };
 
   return (
-    <div className={css.h}>
-      {/* <div className={css.image}>
-        {camper.gallery?.map((image, index) => (
-          <img
-            key={index}
-            className={css.image}
-            src={image.thumb}
-            alt={`Camper ${index + 1}`}
-          />
-        ))}
-      </div> */}
+    <div key={camper.id} className={css.camperCard}>
+      <img src={camper.gallery[0].thumb} alt={camper.name} />
+      <div className={css.camperDetails}>
+        <div className={css.camperTitleLocationContainer}>
+          <div className={css.camperTitle}>
+            <h2 className={css.camperName}>{camper.name}</h2>
+            <div className={css.camperPriceContainer}>
+              <p className={css.camperPrice}>
+                €
+                {camper.price.toLocaleString("en", {
+                  useGrouping: false,
+                  minimumFractionDigits: 2,
+                })}
+              </p>
+              <button
+                key={camper.id}
+                onClick={() => handleFavoriteClick(camper.id)}
+                className={css.favoriteButton}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  className={getIsFavorite(camper.id)}
+                >
+                  <use xlinkHref="/src/components/svg/symbol-defs.svg#icon-serd" />
+                </svg>
+              </button>
+            </div>
+            <div className={css.camperRatingLocationContainer}>
+              <div className={css.camperRatingContainer}>
+                <svg id="rating-star" width={20} height={20} />
+                {camper.rating}({camper.reviews.length} Reviews)
+              </div>
+              <div className={css.camperLocationContainer}>
+                <svg id="map" width={16} height={16} />
+                {camper.location}
+              </div>
+            </div>
+          </div>
 
-      <ul className={css.gallary}>
-        {camper.gallery?.map((item, index) => (
-          <li key={index}>
-            <img
-              className={css.image}
-              src={item.thumb}
-              alt={`Gallery image ${index + 1}`}
-            />
-          </li>
-        ))}
-      </ul>
-      <ul className={css.p}>
-        <li key={camper.id}>
-          <h3>{camper.name}</h3>
-          <p>Price: {camper.price} UAH</p>
-          <p>Location: {camper.location}</p>
-          <p>Rating: {camper.rating} ★</p>
-        </li>
-      </ul>
+          <div className={css.camperDescription}>{camper.description}</div>
+
+          <div className={css.camperInfo}>
+            {camper.transmission && (
+              <span className={css.camperInfoItem}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+                  <use xlinkHref="/src/components/svg/symbol-defs.svg#icon-diagram" />
+                </svg>
+                {camper.transmission}
+              </span>
+            )}
+            {camper.engine && (
+              <span className={css.camperInfoItem}>
+                <svg id="fuel-pump" width={20} height={20} />
+                {camper.engine}
+              </span>
+            )}
+            {camper.form && (
+              <span className={css.camperInfoItem}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+                  <use xlinkHref="/src/components/svg/symbol-defs.svg#icon-bi_grid-3x3-gap" />
+                </svg>
+                {camper.form === "fullyIntegrated"
+                  ? "Fully Integrated"
+                  : camper.form === "panelTruck"
+                  ? "Panel Truck"
+                  : camper.form}
+              </span>
+            )}
+            {camper.AC && (
+              <span className={css.camperInfoItem}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+                  <use xlinkHref="/src/components/svg/symbol-defs.svg#icon-ac" />
+                </svg>
+                AC
+              </span>
+            )}
+            {camper.kitchen && (
+              <span className={css.camperInfoItem}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+                  <use xlinkHref="/src/components/svg/symbol-defs.svg#icon-cup-hot" />
+                </svg>
+                Kitchen
+              </span>
+            )}
+            {camper.bathroom && (
+              <span className={css.camperInfoItem}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+                  <use xlinkHref="/src/components/svg/symbol-defs.svg#icon-ph_shower" />
+                </svg>
+                Bathroom
+              </span>
+            )}
+            {camper.TV && (
+              <span className={css.camperInfoItem}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+                  <use xlinkHref="/src/components/svg/symbol-defs.svg#icon-tv" />
+                </svg>
+                TV
+              </span>
+            )}
+          </div>
+          <Link
+            to={`/catalog/${camper.id}`}
+            className={css.showMoreButton}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Show More
+          </Link>
+        </div>
+      </div>
     </div>
   );
-}
+};
+
+export default CamperItem;

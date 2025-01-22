@@ -1,131 +1,34 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import { selectCampers } from "../../redux/campers/selectors.js";
+import { useDispatch, useSelector } from "react-redux";
 import css from "../../components/CatalogList/CatalogList.module.css";
-import { Link } from "react-router-dom";
+import { Loader } from "../../components/Loader/Loader.jsx";
+import CamperItem from "../../components/CamperItem/CamperItem.jsx";
+import { loadMoreCampers } from "../../redux/campers/slice.js";
 
-export default function CatalogList() {
-  const campers = useSelector(selectCampers);
-  const [visibleCount, setVisibleCount] = useState(5); // Initial visible items count
+const CatalogList = ({ campers, hasMore }) => {
+  const dispatch = useDispatch();
 
-  const loadMore = () => {
-    setVisibleCount(visibleCount + 5); // Increase visible items by 4
+  const status = useSelector((state) => state.campers.status);
+
+  const handleLoadMore = () => {
+    dispatch(loadMoreCampers());
   };
 
   return (
-    <div className={css.catalog}>
-      <div className={css.list}>
-        {campers.items?.slice(0, visibleCount).map((camper) => (
-          <div key={camper.id}>
-            <div className={css.item}>
-              <img
-                src={camper.gallery[0].thumb}
-                alt={camper.name}
-                width={292}
-                className={css.camperImage}
-              />
-              <div className={css.info}>
-                <div className={css.nameinfo}>
-                  <h2 className={css.campername}>{camper.name}</h2>
-                  <p className={css.price}>
-                    €
-                    {camper.price.toLocaleString("en", {
-                      useGrouping: false,
-                      minimumFractionDigits: 2,
-                    })}
-                    <button className={css.buttonFavorit}>&</button>
-                  </p>
-                </div>
+    <div className={css.campersListContainer}>
+      {status === "loading" && <Loader />}
+      {status === "succeeded" && !campers && <p>No campers found</p>}
 
-                <div className={css.rating}>
-                  <div className={css.ratingCont}>
-                    {camper.rating}({camper.reviews.length} Reviews)
-                  </div>
-                  <div className={css.camperLocation}>{camper.location}</div>
-                </div>
+      {status === "failed" && <p>Error loading campers</p>}
 
-                <div className={css.camperDescription}>
-                  {camper.description}
-                </div>
-                <div>
-                  <div className={css.box}>
-                    <div className={css.icon}>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="15"
-                      >
-                        <use xlinkHref="/src/components/svg/symbol-defs.svg#icon-ac" />
-                      </svg>
-                      <div className={css.text}>TV</div>
-                    </div>
-                    <div className={css.icon}>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                      >
-                        <use xlinkHref="/src/components/svg/symbol-defs.svg#icon-diagram" />
-                      </svg>
-                      <div className={css.text}>Automatic</div>
-                    </div>
+      {status === "succeeded" &&
+        campers &&
+        campers.map((camper) => <CamperItem key={camper.id} camper={camper} />)}
 
-                    <div className={css.icon}>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                      >
-                        <use xlinkHref="/src/components/svg/symbol-defs.svg#icon-cup-hot" />
-                      </svg>
-                      <div className={css.text}>Kitchen</div>
-                    </div>
-
-                    <div className={css.icon}>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                      >
-                        <use xlinkHref="/src/components/svg/symbol-defs.svg#icon-tv" />
-                      </svg>
-                      <div className={css.text}>AC</div>
-                    </div>
-
-                    <div className={css.icon}>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                      >
-                        <use xlinkHref="/src/components/svg/symbol-defs.svg#icon-ph_shower" />
-                      </svg>
-                      <div className={css.text}>Bathroom</div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <Link
-                      to={`/catalog/${camper.id}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <button className={css.butButton}>Show more</button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Load More Button */}
-      {visibleCount < campers.items?.length && (
-        <button className={css.loadMoreButton} onClick={loadMore}>
-          Load More
-        </button>
+      {status === "succeeded" && hasMore && (
+        <button onClick={handleLoadMore}>Load More</button>
       )}
     </div>
   );
-}
+};
+
+export default CatalogList;

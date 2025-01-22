@@ -1,1 +1,1 @@
-export const selectCampers = (state) => state.campers.items;
+export const selectCampers = (state) => state.campers;

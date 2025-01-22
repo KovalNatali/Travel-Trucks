@@ -5,10 +5,10 @@ const filtersSlice = createSlice({
   initialState: {
     location: "",
     type: "",
-    itAC: false,
-    itKitchen: false,
-    itBathroom: false,
-    itTV: false,
+    hasAC: false,
+    hasKitchen: false,
+    hasBathroom: false,
+    hasTV: false,
     transmission: "",
   },
   reducers: {
@@ -18,16 +18,16 @@ const filtersSlice = createSlice({
     setType(state, action) {
       state.type = action.payload;
     },
-    setItAC(state, action) {
+    setHasAC(state, action) {
       state.hasAC = action.payload;
     },
-    setItKitchen(state, action) {
+    setHasKitchen(state, action) {
       state.hasKitchen = action.payload;
     },
-    setItBathroom(state, action) {
+    setHasBathroom(state, action) {
       state.hasBathroom = action.payload;
     },
-    setItTV(state, action) {
+    setHasTV(state, action) {
       state.hasTV = action.payload;
     },
     setTransmission(state, action) {
@@ -36,10 +36,10 @@ const filtersSlice = createSlice({
     resetFilters(state) {
       state.location = "";
       state.type = "";
-      state.itAC = false;
-      state.itKitchen = false;
-      state.itBathroom = false;
-      state.itTV = false;
+      state.hasAC = false;
+      state.hasKitchen = false;
+      state.hasBathroom = false;
+      state.hasTV = false;
       state.transmission = "";
     },
   },
@@ -48,10 +48,10 @@ const filtersSlice = createSlice({
 export const {
   setLocation,
   setType,
-  setItAC,
-  setItKitchen,
-  setItBathroom,
-  setItTV,
+  setHasAC,
+  setHasKitchen,
+  setHasBathroom,
+  setHasTV,
   setTransmission,
   resetFilters,
 } = filtersSlice.actions;

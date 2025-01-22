@@ -46,3 +46,8 @@ h6 {
 #__next {
   isolation: isolate;
 }
+ul {
+  list-style: none; /* Відключає маркери */
+  padding: 0; /* Скидає відступи */
+  margin: 0; /* Скидає зовнішні відступи */
+}

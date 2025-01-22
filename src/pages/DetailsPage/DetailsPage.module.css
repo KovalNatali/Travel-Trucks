@@ -1,0 +1,9 @@
+.detalscontaner {
+  margin: 48px auto;
+  width: 1312px;
+}
+.menudetails {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}

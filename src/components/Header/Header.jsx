@@ -5,7 +5,12 @@ import css from "../../components/Header/Header.module.css";
 const Header = () => {
   return (
     <nav className={css.nav}>
-      <div>TravelTrucks</div>
+      <div className={css.logo}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="136" height="15">
+          <use xlinkHref="/src/components/svg/symbol-defs.svg#icon-Logo" />
+        </svg>
+      </div>
+
       <div className={css.navlink}>
         <NavLink
           to="/"

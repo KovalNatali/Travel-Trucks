@@ -1,0 +1,122 @@
+/* BookingForm.module.css */
+.bookingForm {
+  display: flex;
+  width: 641px;
+  padding: 44px 57px;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 24px;
+  margin: 0 auto;
+  border-radius: 10px;
+  border: 1px solid var(--Gray-light, #dadde1);
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+input,
+textarea {
+  display: flex;
+  width: 527px;
+  height: 60px;
+  padding: 18px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 12px;
+  background: #f7f7f7;
+  border: 0px;
+  color: #6c717b;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.butto {
+  background-color: #e44848;
+  color: #fff;
+  padding: 16px 60px;
+  border: none;
+  border-radius: 200px;
+  font-size: 16px;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.butto:hover {
+  background-color: #d84343;
+}
+
+.error {
+  border-color: red;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.notification {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f44336;
+  color: white;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.notification.error {
+  background-color: #f44336;
+}
+
+.title {
+  color: #101828;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+.txt {
+  color: #6c717b;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+.textare {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: 527px;
+}
+/* .form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+} */
+.formGrou {
+  height: 118px;
+  resize: none;
+}
+.buttonsubmit {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0;
+  gap: 10px;
+  width: 527px;
+  margin-top: 10px;
+}
