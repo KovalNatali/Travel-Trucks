@@ -89,6 +89,7 @@ const Filters = () => {
                 name="hasAC"
                 checked={filters.hasAC}
                 onChange={handleFilterChange}
+                className={css.checkboxInput}
               />
               AC
             </label>
@@ -229,3 +230,84 @@ const Filters = () => {
 };
 
 export default Filters;
+
+// //   return (
+//     <div className={css.box}>
+//       <div className={css.icon}>
+//         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="28">
+//           <use xlinkHref="/src/components/svg/symbol-defs.svg#icon-ac" />
+//         </svg>
+//         <label className={css.text}>
+//           AC
+//           <input
+//             type="radio"
+//             name="itAC"
+//             checked={filters.itAC}
+//             onChange={handleFilterChange}
+//           />
+//         </label>
+//       </div>
+
+// //       <div className={css.icon}>
+// //         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
+// //           <use xlinkHref="/src/components/svg/symbol-defs.svg#icon-diagram" />
+// //         </svg>
+// //         <label className={css.text}>
+// //           Automatic
+// //           <input
+//             type="radio"
+//             name="transmission"
+//             value="automatic"
+//             checked={filters.transmission === "automatic"}
+//             onChange={handleFilterChange}
+//           />
+//         </label>
+//       </div>
+
+//       <div className={css.icon}>
+//         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+//           <use xlinkHref="/src/components/svg/symbol-defs.svg#icon-cup-hot" />
+//         </svg>
+//         <label className={css.text}>
+//           Kitchen
+//           <input
+//             type="radio"
+//             name="kitchen"
+//             checked={filters.itKitchen}
+//             onChange={handleFilterChange}
+//           />
+//         </label>
+//       </div>
+
+//       <div className={css.icon}>
+//         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+//           <use xlinkHref="/src/components/svg/symbol-defs.svg#icon-tv" />
+//         </svg>
+//         <label className={css.text}>
+//           TV
+//           <input
+//             type="radio"
+//             name="tv"
+//             checked={filters.itTV}
+//             onChange={handleTVChange}
+//           />
+//         </label>
+//       </div>
+
+//       <div className={css.icon}>
+//         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+//           <use xlinkHref="/src/components/svg/symbol-defs.svg#icon-ph_shower" />
+//         </svg>
+//         <label className={css.text}>
+//           Bathroom
+//           <input
+//             type="radio"
+//             name="bathroom"
+//             checked={filters.itBathroom}
+//             onChange={handleBathroomChange}
+//           />
+//         </label>
+//       </div>
+//     </div>
+//   );
+// }

@@ -5,6 +5,7 @@ import {
 } from "../../redux/favoritesSlice";
 import { useDispatch, useSelector } from "react-redux";
 import css from "../CamperItem/CamperItem.module.css";
+
 // import { SVG } from "../../components/svg/svg";
 
 const CamperItem = ({ camper }) => {
@@ -128,14 +129,16 @@ const CamperItem = ({ camper }) => {
               </span>
             )}
           </div>
-          <Link
-            to={`/catalog/${camper.id}`}
-            className={css.showMoreButton}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Show More
-          </Link>
+          <div>
+            <Link
+              to={`/catalog/${camper.id}`}
+              className={css.showMoreButton}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Show More
+            </Link>
+          </div>
         </div>
       </div>
     </div>

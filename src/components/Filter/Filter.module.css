@@ -141,6 +141,7 @@
 }
 
 .checkboxLabelLong {
+  cursor: pointer;
   padding: 4px 18px;
 }
 
@@ -171,3 +172,4 @@
 .searchButton:hover {
   background-color: #d84343;
 }
+/*  */
