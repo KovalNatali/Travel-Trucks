@@ -12,7 +12,7 @@ function DetailsPage() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const camper = useSelector((state) => state.campers.list);
-  // const camper = useSelector((state) => state.campers.list);
+
   // const status = useSelector((state) => state.campers.status);
   // const [activeTab, setActiveTab] = useState("features");
 
@@ -30,13 +30,10 @@ function DetailsPage() {
 
       <div className={css.detalscontaner}>
         <DatailsCramper camper={camper} />
-        <div className={css.menudetails}> </div>
-        <Reviews reviews={camper.reviews} />
-        <BookingForm />
-        {/* <div>
-          <Link to={"features"}>Features</Link>
-          <Link to={"reviews"}>Reviews</Link>
-        </div> */}
+        <div className={css.menudetails}>
+          <Reviews reviews={camper.reviews} key={camper.id} />
+          <BookingForm />
+        </div>
       </div>
     </>
   );

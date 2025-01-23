@@ -14,9 +14,7 @@ import css from "./Filter.module.css";
 
 const Filters = () => {
   const dispatch = useDispatch();
-  const filter = useSelector((state) => state.filters);
-  const filters = (state) => state.campers.filters;
-  // const filters = useSelector((state) => state.filters.filter);
+  const filters = useSelector((state) => state.filters);
 
   // Handle filter changes
   const handleFilterChange = (event) => {
@@ -50,7 +48,7 @@ const Filters = () => {
   const handleFilterSubmit = (e) => {
     e.preventDefault();
     // Dispatch action to filter campers based on the current state values
-    dispatch(setFilteredCampers(filter));
+    dispatch(setFilteredCampers(filters));
     // Reset the filters
     dispatch(resetFilters());
   };
@@ -78,7 +76,7 @@ const Filters = () => {
           <div className={css.checkboxGroup}>
             <label
               className={`${css.checkboxLabel} ${
-                filters.hasAC ? css.checkboxLabelActive : ""
+                filters.hasAC ? css.checkboxLabelActive : undefined
               }`}
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="28">
@@ -97,7 +95,7 @@ const Filters = () => {
               className={`${css.checkboxLabel} ${
                 filters.transmission === "automatic"
                   ? css.checkboxLabelActive
-                  : ""
+                  : undefined
               }`}
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
@@ -129,7 +127,7 @@ const Filters = () => {
             </label>
             <label
               className={`${css.checkboxLabel} ${
-                filters.hasTV ? css.checkboxLabelActive : ""
+                filters.hasTV ? css.checkboxLabelActive : undefined
               }`}
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
@@ -145,7 +143,7 @@ const Filters = () => {
             </label>
             <label
               className={`${css.checkboxLabel} ${
-                filters.hasBathroom ? css.checkboxLabelActive : ""
+                filters.hasBathroom ? css.checkboxLabelActive : undefined
               }`}
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
@@ -168,7 +166,9 @@ const Filters = () => {
           <div className={css.checkboxGroup}>
             <label
               className={`${css.checkboxLabel} ${css.checkboxLabelLong} ${
-                filters.type === "panelTruck" ? css.checkboxLabelActive : ""
+                filters.type === "panelTruck"
+                  ? css.checkboxLabelActive
+                  : undefined
               }`}
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
@@ -187,7 +187,7 @@ const Filters = () => {
               className={`${css.checkboxLabel} ${css.checkboxLabelLong} ${
                 filters.type === "fullyIntegrated"
                   ? css.checkboxLabelActive
-                  : ""
+                  : undefined
               }`}
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
@@ -204,7 +204,7 @@ const Filters = () => {
             </label>
             <label
               className={`${css.checkboxLabel} ${
-                filters.type === "alcove" ? css.checkboxLabelActive : ""
+                filters.type === "alcove" ? css.checkboxLabelActive : undefined
               }`}
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
@@ -230,84 +230,3 @@ const Filters = () => {
 };
 
 export default Filters;
-
-// //   return (
-//     <div className={css.box}>
-//       <div className={css.icon}>
-//         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="28">
-//           <use xlinkHref="/src/components/svg/symbol-defs.svg#icon-ac" />
-//         </svg>
-//         <label className={css.text}>
-//           AC
-//           <input
-//             type="radio"
-//             name="itAC"
-//             checked={filters.itAC}
-//             onChange={handleFilterChange}
-//           />
-//         </label>
-//       </div>
-
-// //       <div className={css.icon}>
-// //         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
-// //           <use xlinkHref="/src/components/svg/symbol-defs.svg#icon-diagram" />
-// //         </svg>
-// //         <label className={css.text}>
-// //           Automatic
-// //           <input
-//             type="radio"
-//             name="transmission"
-//             value="automatic"
-//             checked={filters.transmission === "automatic"}
-//             onChange={handleFilterChange}
-//           />
-//         </label>
-//       </div>
-
-//       <div className={css.icon}>
-//         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
-//           <use xlinkHref="/src/components/svg/symbol-defs.svg#icon-cup-hot" />
-//         </svg>
-//         <label className={css.text}>
-//           Kitchen
-//           <input
-//             type="radio"
-//             name="kitchen"
-//             checked={filters.itKitchen}
-//             onChange={handleFilterChange}
-//           />
-//         </label>
-//       </div>
-
-//       <div className={css.icon}>
-//         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
-//           <use xlinkHref="/src/components/svg/symbol-defs.svg#icon-tv" />
-//         </svg>
-//         <label className={css.text}>
-//           TV
-//           <input
-//             type="radio"
-//             name="tv"
-//             checked={filters.itTV}
-//             onChange={handleTVChange}
-//           />
-//         </label>
-//       </div>
-
-//       <div className={css.icon}>
-//         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
-//           <use xlinkHref="/src/components/svg/symbol-defs.svg#icon-ph_shower" />
-//         </svg>
-//         <label className={css.text}>
-//           Bathroom
-//           <input
-//             type="radio"
-//             name="bathroom"
-//             checked={filters.itBathroom}
-//             onChange={handleBathroomChange}
-//           />
-//         </label>
-//       </div>
-//     </div>
-//   );
-// }

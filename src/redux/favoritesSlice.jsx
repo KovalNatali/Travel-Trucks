@@ -10,9 +10,13 @@ const favoritesSlice = createSlice({
   reducers: {
     addToFavorites(state, action) {
       state.list.push(action.payload);
+      // Записуємо оновлений список в localStorage
+      localStorage.setItem("favorites", JSON.stringify(state.list));
     },
     removeFromFavorites(state, action) {
       state.list = state.list.filter((el) => el !== action.payload);
+      // Записуємо оновлений список в localStorage
+      localStorage.setItem("favorites", JSON.stringify(state.list));
     },
   },
 });

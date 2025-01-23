@@ -14,7 +14,7 @@ const CamperItem = ({ camper }) => {
 
   // Handle favorites
   const getIsFavorite = (id) => {
-    return favorites.includes(id);
+    return favorites.includes(id) ? "favorite" : "";
   };
 
   const handleFavoriteClick = (id) => {
@@ -47,11 +47,16 @@ const CamperItem = ({ camper }) => {
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
+                  id="favorite"
                   width="24"
                   height="24"
-                  className={getIsFavorite(camper.id)}
+                  className={
+                    getIsFavorite(camper.id)
+                      ? css.camperFavoriteAdded
+                      : css.camperFavorite
+                  }
                 >
-                  <use xlinkHref="/src/components/svg/symbol-defs.svg#icon-serd" />
+                  <use xlinkHref="/src/components/svg/symbol-defs.svg#icon-diagram" />
                 </svg>
               </button>
             </div>
@@ -129,16 +134,15 @@ const CamperItem = ({ camper }) => {
               </span>
             )}
           </div>
-          <div>
-            <Link
-              to={`/catalog/${camper.id}`}
-              className={css.showMoreButton}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Show More
-            </Link>
-          </div>
+
+          <Link
+            to={`/catalog/${camper.id}`}
+            className={css.showMoreButton}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Show More
+          </Link>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import css from "./BookingForm.module.css";
+import css from "./Booking.module.css";
 
 const BookingForm = () => {
   const [notification, setNotification] = useState(""); // Стан для відображення повідомлення

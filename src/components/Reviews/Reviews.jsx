@@ -1,7 +1,8 @@
+import css from "./Reviews.module.css";
 function Reviews({ reviews }) {
   return (
-    <ul>
-      {reviews.map((review) => (
+    <ul className={css.reviewsmenu}>
+      {reviews?.map((review) => (
         <li key={review.id}>
           <div>
             <div>{review.reviewer_name}</div>

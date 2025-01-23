@@ -4,7 +4,7 @@ import { Loader } from "../../components/Loader/Loader.jsx";
 import CamperItem from "../../components/CamperItem/CamperItem.jsx";
 import { loadMoreCampers } from "../../redux/campers/slice.js";
 
-const CatalogList = ({ campers, hasMore }) => {
+const CatalogList = ({ campers }) => {
   const dispatch = useDispatch();
 
   const status = useSelector((state) => state.campers.status);
@@ -24,8 +24,11 @@ const CatalogList = ({ campers, hasMore }) => {
         campers &&
         campers.map((camper) => <CamperItem key={camper.id} camper={camper} />)}
 
-      {status === "succeeded" && hasMore && (
-        <button onClick={handleLoadMore}>Load More</button>
+      {/* <button onClick={handleLoadMore}>Load More</button> */}
+      {status === "succeeded" && (
+        <button className={css.loadMoreButton} onClick={handleLoadMore}>
+          Load More
+        </button>
       )}
     </div>
   );

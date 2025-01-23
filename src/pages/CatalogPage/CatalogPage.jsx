@@ -7,11 +7,7 @@ import Filter from "../../components/Filter/Filter.jsx";
 
 function CatalogPage() {
   const dispatch = useDispatch();
-  const { paginatedCampers, filteredList } = useSelector(
-    (state) => state.campers
-  );
-
-  const hasMoreCampers = filteredList.length > paginatedCampers.length;
+  const { paginatedCampers } = useSelector((state) => state.campers);
 
   // Fetch campers
   useEffect(() => {
@@ -22,7 +18,7 @@ function CatalogPage() {
     <>
       <div className={css.conteinercanalog}>
         <Filter />
-        <CatalogList campers={paginatedCampers} hasMore={hasMoreCampers} />
+        <CatalogList campers={paginatedCampers} />
       </div>
     </>
   );
