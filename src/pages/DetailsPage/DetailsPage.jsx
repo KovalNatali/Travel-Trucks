@@ -6,7 +6,7 @@ import css from "../../pages/DetailsPage/DetailsPage.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCamperById } from "../../redux/campers/operations.js";
 import { useEffect } from "react";
-// import Reviews from "../../components/Reviews/Reviews.jsx";
+import Reviews from "../../components/Reviews/Reviews.jsx";
 
 function DetailsPage() {
   const { id } = useParams();
@@ -30,7 +30,7 @@ function DetailsPage() {
       <div className={css.detalscontaner}>
         <DatailsCramper camper={camper} />
         <div className={css.menudetails}>
-          {/* <Reviews reviews={camper.reviews} /> */}
+          <Reviews key={camper.id} reviews={camper.reviews} />
           <BookingForm />
         </div>
       </div>
