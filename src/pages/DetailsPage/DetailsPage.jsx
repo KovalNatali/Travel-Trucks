@@ -27,7 +27,6 @@ function DetailsPage() {
   return (
     <>
       <title>Details</title>
-
       <div className={css.detalscontaner}>
         <DatailsCramper camper={camper} />
         <div className={css.menudetails}>
