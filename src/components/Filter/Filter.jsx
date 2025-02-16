@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { PiShower } from "react-icons/pi";
 import {
   setLocation,
   setType,
@@ -146,16 +147,18 @@ const Filters = () => {
                 filters.hasBathroom ? css.checkboxLabelActive : undefined
               }`}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+              <p>
+                <PiShower size="32" /> Bathroom
+              </p>
+              {/* <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
                 <use xlinkHref="/src/components/svg/symbol-defs.svg#icon-ph_shower" />
-              </svg>
+              </svg> */}
               <input
                 type="checkbox"
                 name="hasBathroom"
                 checked={filters.hasBathroom}
                 onChange={handleFilterChange}
               />
-              Bathroom
             </label>
           </div>
         </div>
