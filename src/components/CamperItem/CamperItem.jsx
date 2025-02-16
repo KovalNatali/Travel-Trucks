@@ -1,4 +1,4 @@
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   addToFavorites,
   removeFromFavorites,
@@ -135,15 +135,14 @@ const CamperItem = ({ camper }) => {
             )}
           </div>
 
-          <a
-            href={`/catalog/${camper.id}`}
+          <Link
+            to={`/catalog/${camper.id}`}
             className={css.showMoreButton}
             target="_blank"
             rel="noopener noreferrer"
-            role="button"
           >
             Show More
-          </a>
+          </Link>
         </div>
       </div>
     </div>
