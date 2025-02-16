@@ -10,7 +10,6 @@ export default function DatailsCramper({ camper }) {
             <h3 className={css.name}>{camper.name}</h3>
             <div className={css.camperRatingLocationContainer}>
               <div className={css.camperRatingContainer}>
-                {/* <svg id="rating-star" width={20} height={20} /> */}
                 {camper.rating}Reviews
               </div>
 
